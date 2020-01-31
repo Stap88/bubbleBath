@@ -1,33 +1,24 @@
-// Coding Train
 
-let ball1;
-let ball2;
-let speed_x = 4; 
-let speed_y = 4;
-let w = 1920; // Canvas Width
-let h = 1080; // Canvas Height
-let initialColor;
-let ball_count = 3;
+const speed_x = 4; // Ball speed
+const speed_y = 4; // Ball speed
+let w = 600; // Canvas width
+let h = 400; // Canvas height
+let initialColor; // Ball & Text starting color
+const ball_count = 30;
+var ball_list = [];
+
 
 function setup() {
+  // Runs First
   createCanvas(w, h);
   initialColor = color(255, 0, 255);
-  ball1 = new Ball(200, 200, 40, w, h, speed_x, speed_y);
-  ball2 = new Ball(400, 200, 40, w, h, speed_x, speed_y);
+  makeBalls(ball_count);
 }
 
 function draw() {
+  // Main Loop
   background(0);
-  textSize(32);
-  // text('bubbleBath', 10, 30);
-  ball1.move();
-  ball1.show();
-  textSize(20);
-  ballText(ball1);
-  ball2.move();
-  ball2.show();
-  ballText(ball2);
-  
+  moveBalls(ball_list);
 }
 
 function ballText(ballNum) {
@@ -37,11 +28,26 @@ function ballText(ballNum) {
 
 function makeBalls(ball_count) {
   // Make x balls
+  var count = 0;
+  while (count != ball_count) {
+    let ball = new Ball(random(20, 580), random(20, 380), 30, w, h, speed_x, speed_y);
+    console.log(ball);
+    ball_list.push(ball);
+    count += 1;
+  } 
+  console.log(ball_list);
 }
 
-function moveBalls(balls){
-  // For each ball: move(), show(), ballText()
+function moveBalls(ball_list){
+  // Move/Show each ball, update speed text
+  for (let ball of ball_list) {
+    ball.move();
+    ball.show();
+    textSize(20);
+    ballText(ball);
+  }
 }
+
 
 class Ball {
   constructor(x, y, r, w, h, sp_x, sp_y) {
