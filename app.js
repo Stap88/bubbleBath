@@ -1,10 +1,10 @@
 
 const speed_x = 4; // Ball speed
 const speed_y = 4; // Ball speed
-let w = 600; // Canvas width
-let h = 400; // Canvas height
+let w = 800; // Canvas width
+let h = 600; // Canvas height
 let initialColor; // Ball & Text starting color
-const ball_count = 30;
+const ball_count = 20;
 var ball_list = [];
 
 
@@ -30,12 +30,10 @@ function makeBalls(ball_count) {
   // Make x balls
   var count = 0;
   while (count != ball_count) {
-    let ball = new Ball(random(20, 580), random(20, 380), 30, w, h, speed_x, speed_y);
-    console.log(ball);
+    let ball = new Ball(random(20, (w - 20)), random(20, (h - 20)), 30, w, h, speed_x, speed_y);
     ball_list.push(ball);
     count += 1;
   } 
-  console.log(ball_list);
 }
 
 function moveBalls(ball_list){
