@@ -2,11 +2,12 @@
 
 let ball1;
 let ball2;
-let speed_x = 5; 
-let speed_y = 5;
+let speed_x = 4; 
+let speed_y = 4;
 let w = 600; // Canvas Width
 let h = 400; // Canvas Height
 let initialColor;
+let ball_count = 3;
 
 function setup() {
   createCanvas(w, h);
@@ -22,13 +23,25 @@ function draw() {
   ball1.move();
   ball1.show();
   textSize(20);
-  text(`${round(ball1.speed_x)}, ${round(ball1.speed_y)}`, (ball1.x - 20), (ball1.y + 5));
+  ballText(ball1);
   ball2.move();
   ball2.show();
-  text(`${round(ball2.speed_x)}, ${round(ball2.speed_y)}`, (ball2.x - 20), (ball2.y + 5));
+  ballText(ball2);
   
 }
 
+function ballText(ballNum) {
+  // Text on ball displays current x, y speed
+  text(`${round(ballNum.speed_x)}, ${round(ballNum.speed_y)}`, (ballNum.x - 20), (ballNum.y + 5));
+}
+
+function makeBalls(ball_count) {
+  // Make x balls
+}
+
+function moveBalls(balls){
+  // For each ball: move(), show(), ballText()
+}
 
 class Ball {
   constructor(x, y, r, w, h, sp_x, sp_y) {
