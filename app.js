@@ -1,23 +1,18 @@
 // Coding Train
 
-// let bubble1;
-// let bubble2;
 let ball1;
-// let ball2;
-let edge;
-let speed_x = 1;
+let ball2;
+let speed_x = 1; 
 let speed_y = 1;
-let w = 1920;
-let l = 1080;
+let w = 600; // Canvas Width
+let h = 400; // Canvas Height
 let initialColor;
 
 function setup() {
-  createCanvas(w, l);
+  createCanvas(w, h);
   initialColor = color(255, 0, 255);
-  // bubble1 = new Bubble(200, 200, 40, w, l);
-  // bubble2 = new Bubble(400, 200, 20, w, l); 
-  ball1 = new Ball(200, 200, 20, w, l, speed_x, speed_y);
-  ball2 = new Ball(400, 200, 40, w, l, (speed_x + 10), (speed_y + 10));
+  ball1 = new Ball(200, 200, 20, w, h, speed_x, speed_y);
+  ball2 = new Ball(400, 200, 40, w, h, (speed_x + 10), (speed_y + 10));
 }
 
 function draw() {
@@ -26,20 +21,16 @@ function draw() {
   ball1.show();
   ball2.move();
   ball2.show();
-  // bubble1.move();
-  // bubble1.show();
-  // bubble2.move();
-  // bubble2.show();
 }
 
 
 class Ball {
-  constructor(x, y, r, w, l, sp_x, sp_y) {
+  constructor(x, y, r, w, h, sp_x, sp_y) {
     this.x = x;
     this.y = y;
     this.r = r;
     this.w = w;
-    this.l = l;
+    this.h = h;
     this.c = initialColor;
     this.direction_x = 'right';
     this.direction_y = 'up';
@@ -106,7 +97,7 @@ class Ball {
 
   move_y(){
     let y_zero = (this.r / 2) + 5;
-    let y_limit = l - ((this.r / 2) + 5);
+    let y_limit = h - ((this.r / 2) + 5);
     this.future_y = this.y;
     this.future_y += this.speed_y;
 
@@ -142,53 +133,3 @@ class Ball {
     }
 }
 
-// class Bubble {
-//   constructor(x, y, r, w, l) {
-//     this.x = x;
-//     this.y = y;
-//     this.r = r;
-//     this.w = w;
-//     this.l = l;
-//     this.c = initialColor;
-//   }
-
-//   move() {
-//     this.moveX();
-//     this.moveY();
-//   }
-
-//   moveX() {
-//     this.future_x = this.x + random((0 - speed), speed);
-//     if (this.future_x > (w - ((this.r / 2) + 5)) || this.future_x < ((this.r / 2) + 5)) {
-//       this.newColor();
-//     } else {
-//       this.x = this.future_x;
-//     }
-//   }
-
-//   moveY() {
-//     this.future_y = this.y + random((0 - speed), speed);
-//     if (this.future_y > (l - ((this.r / 2) + 5)) || this.future_y < ((this.r / 2) + 5)) {
-//       this.newColor();
-//     } else {
-//       this.y = this.future_y;
-//     }
-//   }
-  
-//   newColor() {
-//     this.c = color(random(0, 255), random(0, 255), random(0, 255));
-//     // print('newColor()');
-//   }
-
-//   show() {
-//     stroke(255);
-//     strokeWeight(4);
-//     // noFill();
-//     // fill(color(random(0, 255), random(0, 255), random(0, 255)));
-//     fill(this.c);
-//     ellipse(this.x, this.y, this.r * 2);
-//     if (this.c === initialColor) {
-//       this.newColor;
-//     }
-//     }
-// }
