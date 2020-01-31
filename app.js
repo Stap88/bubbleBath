@@ -4,8 +4,8 @@ let ball1;
 let ball2;
 let speed_x = 4; 
 let speed_y = 4;
-let w = 600; // Canvas Width
-let h = 400; // Canvas Height
+let w = 1920; // Canvas Width
+let h = 1080; // Canvas Height
 let initialColor;
 let ball_count = 3;
 
@@ -19,7 +19,7 @@ function setup() {
 function draw() {
   background(0);
   textSize(32);
-  text('bubbleBath', 10, 30);
+  // text('bubbleBath', 10, 30);
   ball1.move();
   ball1.show();
   textSize(20);
@@ -45,16 +45,16 @@ function moveBalls(balls){
 
 class Ball {
   constructor(x, y, r, w, h, sp_x, sp_y) {
-    this.x = x;
-    this.y = y;
-    this.r = r;
-    this.w = w;
-    this.h = h;
+    this.x = x; // x position
+    this.y = y; // y position
+    this.r = r; // radius
+    this.w = w; // canvas width
+    this.h = h; // canvas height
     this.c = initialColor;
     this.direction_x = 'right';
     this.direction_y = 'up';
-    this.speed_x = sp_x;
-    this.speed_y = sp_y;
+    this.speed_x = sp_x; // Move speed x direction
+    this.speed_y = sp_y; // Move speed y direction
   }
 
 
