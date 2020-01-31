@@ -1,8 +1,8 @@
 
 const speed_x = 4; // Ball speed
 const speed_y = 4; // Ball speed
-let w = 800; // Canvas width
-let h = 600; // Canvas height
+let w = 360; // Canvas width
+let h = 740; // Canvas height
 let initialColor; // Ball & Text starting color
 const ball_count = 20;
 var ball_list = [];
