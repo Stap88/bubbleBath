@@ -2,8 +2,8 @@
 
 let ball1;
 let ball2;
-let speed_x = 1; 
-let speed_y = 1;
+let speed_x = 5; 
+let speed_y = 5;
 let w = 600; // Canvas Width
 let h = 400; // Canvas Height
 let initialColor;
@@ -11,16 +11,22 @@ let initialColor;
 function setup() {
   createCanvas(w, h);
   initialColor = color(255, 0, 255);
-  ball1 = new Ball(200, 200, 20, w, h, speed_x, speed_y);
-  ball2 = new Ball(400, 200, 40, w, h, (speed_x + 10), (speed_y + 10));
+  ball1 = new Ball(200, 200, 40, w, h, speed_x, speed_y);
+  ball2 = new Ball(400, 200, 40, w, h, speed_x, speed_y);
 }
 
 function draw() {
   background(0);
+  textSize(32);
+  text('bubbleBath', 10, 30);
   ball1.move();
   ball1.show();
+  textSize(20);
+  text(`${round(ball1.speed_x)}, ${round(ball1.speed_y)}`, (ball1.x - 20), (ball1.y + 5));
   ball2.move();
   ball2.show();
+  text(`${round(ball2.speed_x)}, ${round(ball2.speed_y)}`, (ball2.x - 20), (ball2.y + 5));
+  
 }
 
 
@@ -56,11 +62,11 @@ class Ball {
   }
 
   random_speed_x() {
-    this.speed_x = random(0, 5);
+    this.speed_x = random((speed_x / 2), speed_x);
   }
 
   random_speed_y() {
-    this.speed_y = random(0, 5);
+    this.speed_y = random((speed_y / 2), speed_y);
   }
 
   set_speed_x() {
@@ -80,8 +86,8 @@ class Ball {
   }
 
   move_x(){
-    let x_zero = (this.r / 2) + 5;
-    let x_limit = w - ((this.r / 2) + 5);
+    let x_zero = (this.r / 2) + 5; // Shifts zero to edge of circle instead of center
+    let x_limit = w - ((this.r / 2) + 5); 
     this.future_x = this.x;
     this.future_x += this.speed_x;
 
@@ -96,8 +102,8 @@ class Ball {
   }
 
   move_y(){
-    let y_zero = (this.r / 2) + 5;
-    let y_limit = h - ((this.r / 2) + 5);
+    let y_zero = (this.r / 2) + 5; // Shifts zero to edge of circle instead of center
+    let y_limit = h - ((this.r / 2) + 5); 
     this.future_y = this.y;
     this.future_y += this.speed_y;
 
