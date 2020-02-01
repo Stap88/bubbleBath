@@ -21,6 +21,7 @@ function draw() {
   // Main Loop
   background(0);
   moveBalls(ball_list);
+  windowResizeCheck();
 }
 
 function ballText(ballNum) {
@@ -48,6 +49,23 @@ function moveBalls(ball_list){
   }
 }
 
+function windowResizeCheck() {
+  // Redraws canvas and centers balls on window resize
+  if (w != (window.innerWidth - 20) || h != (window.innerHeight - 20)) {
+    w = window.innerWidth - 20;
+    h = window.innerHeight - 20;
+    createCanvas(w, h);
+    centerBalls();
+  }
+}
+
+function centerBalls(){
+  // Center balls within x, y bounds
+  for (let ball of ball_list) {
+    ball.x = random(20, (w - 20));
+    ball.y = random(20, (h - 20));
+  }
+}
 
 class Ball {
   constructor(x, y, r, w, h, sp_x, sp_y) {
