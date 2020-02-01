@@ -3,10 +3,10 @@ const speed_x = 4; // Ball speed
 const speed_y = 4; // Ball speed
 // let w = 360; // Canvas width
 // let h = 740; // Canvas height
-let w = window.innerWidth - 20; // Canvas width
-let h = window.innerHeight - 20; // Canvas height
+let w = window.innerWidth ; // Canvas width
+let h = window.innerHeight ; // Canvas height
 let initialColor; // Ball & Text starting color
-const ball_count = 20;
+const ball_count = 10;
 var ball_list = [];
 
 
@@ -26,7 +26,7 @@ function draw() {
 
 function ballText(ballNum) {
   // Text on ball displays current x, y speed
-  text(`${round(ballNum.speed_x)}, ${round(ballNum.speed_y)}`, (ballNum.x - 20), (ballNum.y + 5));
+    text(`${round(ballNum.speed_x)}, ${round(ballNum.speed_y)}`, (ballNum.x - 20), (ballNum.y + 5));
 }
 
 function makeBalls(ball_count) {
@@ -37,6 +37,7 @@ function makeBalls(ball_count) {
     ball_list.push(ball);
     count += 1;
   } 
+  console.log(ball_list)
 }
 
 function moveBalls(ball_list){
@@ -123,8 +124,8 @@ class Ball {
   }
 
   move_x(){
-    let x_zero = (this.r / 2) + 5; // Shifts zero to edge of circle instead of center
-    let x_limit = w - ((this.r / 2) + 5); 
+    let x_zero = this.r; 
+    let x_limit = w - this.r;  
     this.future_x = this.x;
     this.future_x += this.speed_x;
 
@@ -139,8 +140,8 @@ class Ball {
   }
 
   move_y(){
-    let y_zero = (this.r / 2) + 5; // Shifts zero to edge of circle instead of center
-    let y_limit = h - ((this.r / 2) + 5); 
+    let y_zero = this.r; 
+    let y_limit = h - this.r; 
     this.future_y = this.y;
     this.future_y += this.speed_y;
 
