@@ -6,7 +6,7 @@ const speed_y = 4; // Ball speed
 let w = window.innerWidth ; // Canvas width
 let h = window.innerHeight ; // Canvas height
 let initialColor; // Ball & Text starting color
-const ball_count = 10;
+const ball_count = 100;
 var ball_list = [];
 
 
@@ -63,8 +63,8 @@ function windowResizeCheck() {
 function centerBalls(){
   // Center balls within x, y bounds
   for (let ball of ball_list) {
-    ball.x = random(20, (w - 20));
-    ball.y = random(20, (h - 20));
+    ball.x = random(30, (w - 30));
+    ball.y = random(30, (h - 30));
   }
 }
 
