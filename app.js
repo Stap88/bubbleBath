@@ -6,7 +6,7 @@ const speed_y = 4; // Ball speed
 let w = window.innerWidth ; // Canvas width
 let h = window.innerHeight ; // Canvas height
 let initialColor; // Ball & Text starting color
-const ball_count = 100;
+const ball_count = 10;
 var ball_list = [];
 
 
